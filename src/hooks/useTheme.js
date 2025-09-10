@@ -1,6 +1,7 @@
 // src/hooks/useTheme.js
+
+import { useLocalStorage } from './useLocalStorage'; // <-- নিশ্চিত করুন ফাইলের নামটি ছোট হাতের অক্ষরে আছে
 import { useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
 
 export const useTheme = () => {
   const [theme, setTheme] = useLocalStorage('theme', 'day'); // 'day' or 'night'
