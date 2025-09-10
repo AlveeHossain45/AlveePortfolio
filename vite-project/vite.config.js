@@ -3,23 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/AlveePortfolio/', // <-- এখানে আপনার GitHub repository-র নাম লিখুন
   plugins: [react()],
-  build: {
-    outDir: 'dist',
-    sourcemap: false,
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          animations: ['framer-motion'],
-          icons: ['lucide-react']
-        }
-      }
-    }
-  },
-  server: {
-    port: 3000,
-    open: true
-  }
 })
