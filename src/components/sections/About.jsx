@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, BookOpen, Award } from 'lucide-react';
 import profile from '../../data/profile';
-import Card from '../ui/Card';
+import Card from '../ui/Card.jsx'; // <-- এক্সটেনশন যোগ করা হয়েছে
 
 const About = () => {
   return (

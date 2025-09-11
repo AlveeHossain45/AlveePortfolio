@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
-import Button from '../ui/Button';
+import Button from '../ui/Button.jsx';
 
 const Header = ({ theme, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
