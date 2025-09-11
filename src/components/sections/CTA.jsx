@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Calendar } from 'lucide-react';
-import Button from '../Button.jsx';
-import Card from '../Card.jsx';
+import Button from '../ui/Button.jsx';
+import Card from '../ui/Card.jsx';
 
 const CTA = () => {
   const handleContactClick = () => {

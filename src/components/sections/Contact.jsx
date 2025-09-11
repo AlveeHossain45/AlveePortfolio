@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import profile from '../../data/profile';
-import Button from '../Button.jsx';
-import Input from '../Input.jsx';
-import Textarea from '../Textarea.jsx';
-import Card from '../Card.jsx';
+import Button from '../ui/Button.jsx';
+import Input from '../ui/Input.jsx';
+import Textarea from '../ui/Textarea.jsx';
+import Card from '../ui/Card.jsx';
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',

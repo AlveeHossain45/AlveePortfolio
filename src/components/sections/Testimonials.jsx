@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import Card from '../Card.jsx';
-import Avatar from '../Avatar.jsx';
+import Card from '../ui/Card.jsx';
+import Avatar from '../ui/Avatar.jsx';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

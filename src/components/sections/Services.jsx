@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Palette, Smartphone, Database, Shield, Search } from 'lucide-react';
-import Card from '../Card.jsx';
+import Card from '../ui/Card.jsx';
 
 const Services = () => {
   const services = [
