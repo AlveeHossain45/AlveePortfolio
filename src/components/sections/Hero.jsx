@@ -3,7 +3,7 @@ import React from 'react';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import profile from '../../data/profile';
-import Button from '../ui/Button.jsx'; // <-- এক্সটেনশন যোগ করা হয়েছে
+import Button from '../Button.jsx';
 
 const Hero = () => {
   const heroRef = useRef(null);

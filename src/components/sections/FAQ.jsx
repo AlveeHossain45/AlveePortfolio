@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
-import Card from '../ui/Card.jsx';
+import Card from '../Card.jsx';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);

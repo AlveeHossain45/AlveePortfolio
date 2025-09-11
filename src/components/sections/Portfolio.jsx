@@ -3,8 +3,8 @@ import React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X } from 'lucide-react';
-import Button from '../ui/Button.jsx'; // <-- এক্সটেনশন যোগ করা হয়েছে
-import Modal from '../ui/Modal.jsx'; // <-- এক্সটেনশন যোগ করা হয়েছে
+import Button from '../Button.jsx';
+import Modal from '../Modal.jsx';
 import portfolioItems from '../../data/portfolio';
 
 const Portfolio = () => {
