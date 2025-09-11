@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
-import Card from '../ui/Card';
+import Button from '../ui/Button.jsx';
+import Input from '../ui/Input.jsx';
+import Card from '../ui/Card.jsx';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
