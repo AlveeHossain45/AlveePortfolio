@@ -1,0 +1,43 @@
+# GitHub Pages-এ স্ট্যাটিক কন্টেন্ট ডেপ্লয় করার জন্য workflow
+name: Deploy to GitHub Pages
+
+on:
+  # "main" ব্রাঞ্চে push করলেই এটি কাজ শুরু করবে
+  push:
+    branches: ["main"]
+
+  # Actions ট্যাব থেকে ম্যানুয়ালি চালানোর অনুমতি দেয়
+  workflow_dispatch:
+
+# GitHub Pages-এ ডেপ্লয় করার জন্য GITHUB_TOKEN-কে অনুমতি দেওয়া হচ্ছে
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
