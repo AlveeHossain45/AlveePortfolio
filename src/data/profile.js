@@ -3,11 +3,11 @@ export default {
     name: "Alvee",
     role: "CSE Student & Aspiring Software Engineer",
     location: "Uttara, Dhaka (from Cumilla)",
-    age: 20,
+    age: 21,
     education: {
       degree: "BSc (CSE)",
       university: "Uttara University",
-      semestersCompleted: 3,
+      semestersCompleted: 4,
       CGPA: "8/12"
     },
     stats: {
@@ -16,7 +16,7 @@ export default {
       ielts: "6.5"
     },
     contacts: {
-      email: "replace-with-mohammadhossain042004.com",
+      email: "replace-with-mohammadhossain042004@gmail.com",
       github: "https://github.com/AlveeHossain45",
       linkedin: "https://www.linkedin.com/in/replace",
       twitter: "https://twitter.com/replace"

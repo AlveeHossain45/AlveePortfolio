@@ -137,7 +137,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                   />
-                  
+                
                   <Textarea
                     label="Message"
                     name="message"
