@@ -1,7 +1,6 @@
-// src/components/layout/Header.jsx
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, NavLink } from 'react-router-dom'; // <-- Link এবং NavLink ইম্পোর্ট করুন
+import { motion, AnimatePresence } from 'framer-motion'; // <-- AnimatePresence ইম্পোর্ট করুন
+import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
 import Button from '../ui/Button.jsx';
@@ -62,7 +61,7 @@ const Header = ({ theme, toggleTheme }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 z-50" // <-- z-index যোগ করা হয়েছে
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -72,32 +71,36 @@ const Header = ({ theme, toggleTheme }) => {
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <motion.div 
-          className="md:hidden absolute top-full left-0 right-0 glass-card p-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-        >
-          <nav className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="text-lg font-medium hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            // className পরিবর্তন করে সলিড ব্যাকগ্রাউন্ড দেওয়া হয়েছে
+            className="md:hidden absolute top-0 left-0 right-0 h-screen bg-white dark:bg-night-background p-6 pt-24"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+          >
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-2xl font-medium hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link to="/contact">
+                <Button variant="primary" size="lg" className="mt-8">
+                  Hire Me
+                </Button>
               </Link>
-            ))}
-            <Link to="/contact">
-              <Button variant="primary" className="mt-4 w-full">
-                Hire Me
-              </Button>
-            </Link>
-          </nav>
-        </motion.div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
