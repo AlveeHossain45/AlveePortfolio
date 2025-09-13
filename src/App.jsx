@@ -15,13 +15,11 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   const [theme, toggleTheme] = useTheme();
-  
-  // শুধুমাত্র প্রোডাকশন বিল্ডের জন্য basename সেট করা হবে
-  const basename = import.meta.env.PROD ? "/AlveePortfolio" : "/";
 
   return (
     <div className="min-h-screen bg-day-background text-day-text dark:bg-night-background dark:text-night-text transition-colors duration-300">
-      <Router basename={basename}>
+      {/* এখান থেকে basename সরিয়ে দেওয়া হয়েছে */}
+      <Router>
         <Header theme={theme} toggleTheme={toggleTheme} />
         
         <Routes>
@@ -42,5 +40,4 @@ function App() {
   );
 }
 
-// এই লাইনটি অত্যন্ত গুরুত্বপূর্ণ। এটি নিশ্চিত করুন যেন এটি ফাইলের শেষে থাকে।
 export default App;
