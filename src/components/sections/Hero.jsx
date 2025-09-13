@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // <-- react-router-dom থেকে Link ইম্পোর্ট করুন
 import profile from '../../data/profile';
 import Button from '../ui/Button.jsx';
 
@@ -20,6 +21,7 @@ const Hero = () => {
 
   return (
     <section 
+      id="home" // <-- হোম সেকশনের জন্য একটি আইডি যোগ করুন
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
@@ -39,19 +41,24 @@ const Hero = () => {
           <p className="text-lg mb-8 max-w-2xl">
             {profile.about}
           </p>
-          <div className="flex gap-4">
-            <Button variant="primary" size="lg">
-              View My Work
-            </Button>
-            <Button variant="outline" size="lg">
-              Download CV
-            </Button>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/portfolio">
+              <Button variant="primary" size="lg">
+                View My Work
+              </Button>
+            </Link>
+            {/* Download CV বাটনটি এখন কাজ করবে */}
+            <a href="/Alvee_CV.pdf" download="Alvee_CV.pdf">
+              <Button variant="outline" size="lg">
+                Download CV
+              </Button>
+            </a>
           </div>
         </motion.div>
         
         <motion.div 
           ref={heroRef}
-          className="flex-1 flex justify-center"
+          className="flex-1 flex justify-center mt-8 md:mt-0"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

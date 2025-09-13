@@ -1,29 +1,30 @@
-// src/hooks/useLocalStorage.js
 import { useState } from 'react';
 
 export const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
-      // যদি কিছু সেভ করা না থাকে, তাহলে initialValue ব্যবহার করো
+      // যদি লোকাল স্টোরেজে কিছু না থাকে, তাহলে প্রাথমিক মান ব্যবহার করুন
       if (item === null) {
         return initialValue;
       }
-      // চেষ্টা করো সেভ করা তথ্যটি পড়ার জন্য
+      // যদি ভ্যালিড JSON হয়, তবে সেটি পার্স করে ব্যবহার করুন
       return JSON.parse(item);
     } catch (error) {
-      // যদি পড়তে গিয়ে কোনো সমস্যা হয় (যেমন আবর্জনা তথ্য), তাহলেও initialValue ব্যবহার করো
-      console.log(error);
-      return initialValue;
+      // যদি JSON পার্স করতে সমস্যা হয়, তাহলে সম্ভবত এটি একটি সাধারণ স্ট্রিং
+      console.warn(`Could not parse JSON for key "${key}". Using raw value.`);
+      return window.localStorage.getItem(key);
     }
   });
 
   const setValue = (value) => {
     try {
-      setStoredValue(value);
-      window.localStorage.setItem(key, JSON.stringify(value));
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      // মান সেভ করার আগে সবসময় JSON.stringify ব্যবহার করুন
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

@@ -1,7 +1,7 @@
 // src/components/layout/Header.jsx
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link, NavLink } from 'react-router-dom'; // <-- Link এবং NavLink ইম্পোর্ট করুন
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
 import Button from '../ui/Button.jsx';
@@ -26,33 +26,39 @@ const Header = ({ theme, toggleTheme }) => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <motion.div 
-          className="text-2xl font-bold text-primary"
-          whileHover={{ scale: 1.05 }}
-        >
-          Alvee
-        </motion.div>
+        <Link to="/">
+          <motion.div 
+            className="text-2xl font-bold text-primary"
+            whileHover={{ scale: 1.05 }}
+          >
+            Alvee
+          </motion.div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
+            <NavLink
               key={item.name}
-              href={item.href}
-              className="text-lg font-medium hover:text-primary transition-colors relative group"
+              to={item.href}
+              className={({ isActive }) =>
+                `text-lg font-medium hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : ''}`
+              }
             >
               {item.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </a>
+            </NavLink>
           ))}
         </nav>
 
         <div className="flex items-center gap-4">
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           
-          <Button variant="primary" className="hidden md:block">
-            Hire Me
-          </Button>
+          <Link to="/contact">
+            <Button variant="primary" className="hidden md:block">
+              Hire Me
+            </Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -75,18 +81,20 @@ const Header = ({ theme, toggleTheme }) => {
         >
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="text-lg font-medium hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
-            <Button variant="primary" className="mt-4">
-              Hire Me
-            </Button>
+            <Link to="/contact">
+              <Button variant="primary" className="mt-4 w-full">
+                Hire Me
+              </Button>
+            </Link>
           </nav>
         </motion.div>
       )}
