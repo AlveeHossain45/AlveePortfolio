@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Smartphone, Database, Shield, Search } from 'lucide-react';
+import { Code, Palette, Smartphone, Database } from 'lucide-react'; // Shield ও Search আইকন সরানো হয়েছে
 
 const ServicesPage = () => {
   const services = [
@@ -27,19 +27,8 @@ const ServicesPage = () => {
       title: "Backend Development",
       description: "Robust server-side development with Node.js, Python, and various databases to build scalable and efficient backend systems.",
       features: ["API Development", "Database Design", "Server Management"]
-    },
-    {
-      icon: <Shield className="w-12 h-12" />,
-      title: "Cybersecurity",
-      description: "Security assessment and implementation to protect your applications from vulnerabilities and ensure data privacy.",
-      features: ["Security Audit", "Vulnerability Testing", "Data Protection"]
-    },
-    {
-      icon: <Search className="w-12 h-12" />,
-      title: "SEO Optimization",
-      description: "Search engine optimization services to improve your website's visibility and ranking on search engine results pages.",
-      features: ["Keyword Research", "Technical SEO", "Content Strategy"]
     }
+    // Cybersecurity এবং SEO Optimization সার্ভিস দুটি মুছে ফেলা হয়েছে
   ];
 
   return (
