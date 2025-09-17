@@ -3,7 +3,6 @@ import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Services from '../components/sections/Services';
 import Portfolio from '../components/sections/Portfolio';
-import Testimonials from '../components/sections/Testimonials';
 import Contact from '../components/sections/Contact';
 import Newsletter from '../components/sections/Newsletter';
 import FAQ from '../components/sections/FAQ';
@@ -18,7 +17,7 @@ const Home = () => {
       <About />
       <Services />
       <Portfolio />
-      <Testimonials />
+      {/* Testimonials বিভাগটি এখান থেকে সরিয়ে দেওয়া হয়েছে */}
       <FAQ />
       <Contact />
       <Newsletter />

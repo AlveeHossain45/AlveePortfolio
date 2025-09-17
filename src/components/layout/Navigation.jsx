@@ -12,7 +12,7 @@ const Navigation = () => {
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Testimonials', href: '#testimonials' },
+    // { name: 'Testimonials', href: '#testimonials' }, <-- এই লাইনটি মুছে ফেলা হয়েছে
     { name: 'Contact', href: '#contact' }
   ];
 
