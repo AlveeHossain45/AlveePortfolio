@@ -26,7 +26,7 @@ export default [
     id: 3,
     title: "Portfolio Design",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    image: "school2.png",
     description: "A modern and clean portfolio design with smooth animations and responsive layout.",
     techStack: ["Figma", "Adobe XD", "Illustrator"],
     tags: ["design", "web"]
