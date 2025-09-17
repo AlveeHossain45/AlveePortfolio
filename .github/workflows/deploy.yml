@@ -25,7 +25,7 @@ export default [
     title: "Inventory Management System",
     category: "Web Development",
     image: "/school3.png", // public ফোল্ডারে থাকা ছবির পাথ
-    description: "A modern and clean inventory management system with smooth animations and responsive layout.",
+    description: "A robust inventory system to track stock levels, customer orders, profitability, and delivery logistics, ensuring efficient business operations.",
     techStack: ["React", "Node.js", "Tailwind CSS"],
     tags: ["web", "react"],
     liveUrl: "https://aicinventoryapp.netlify.app/",
