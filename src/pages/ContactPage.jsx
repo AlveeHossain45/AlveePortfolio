@@ -1,33 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import profile from '../data/profile';
 import Button from '../components/ui/Button';
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend or email service
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
   return (
     <main className="pt-20 min-h-screen">
       <section className="section-padding">
@@ -95,7 +72,16 @@ const ContactPage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <form onSubmit={handleSubmit} className="bg-white dark:bg-night-card p-8 rounded-xl shadow-lg">
+              <form 
+                action="https://api.web3forms.com/submit" 
+                method="POST" 
+                className="bg-white dark:bg-night-card p-8 rounded-xl shadow-lg"
+              >
+                {/* ==================================================== */}
+                {/* আপনার Access Key সহ হিডেন ইনপুটটি এখানে বসান       */}
+                {/* ==================================================== */}
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+
                 <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
                 
                 <div className="space-y-4">
@@ -106,8 +92,6 @@ const ContactPage = () => {
                         type="text"
                         id="name"
                         name="name"
-                        value={formData.name}
-                        onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-transparent"
                       />
@@ -119,8 +103,6 @@ const ContactPage = () => {
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-transparent"
                       />
@@ -133,8 +115,6 @@ const ContactPage = () => {
                       type="text"
                       id="subject"
                       name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-transparent"
                     />
@@ -146,8 +126,6 @@ const ContactPage = () => {
                       id="message"
                       name="message"
                       rows="5"
-                      value={formData.message}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-transparent"
                     ></textarea>

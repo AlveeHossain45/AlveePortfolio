@@ -1,6 +1,5 @@
 // src/components/sections/Portfolio.jsx
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '../ui/Button.jsx';
@@ -11,20 +10,22 @@ import portfolioItems from '../../data/portfolio';
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const filters = ['all', 'web', 'mobile', 'design', 'other'];
+  const filters = ['all', 'web', 'mobile', 'design']; // 'other' সরানো হয়েছে যদি প্রয়োজন না হয়
+
   const filteredItems = activeFilter === 'all' 
     ? portfolioItems 
     : portfolioItems.filter(item => item.tags.includes(activeFilter));
 
   const handleNextProject = () => {
+    if (!selectedProject) return;
     const currentIndex = filteredItems.findIndex(item => item.id === selectedProject.id);
     const nextIndex = (currentIndex + 1) % filteredItems.length;
     setSelectedProject(filteredItems[nextIndex]);
   };
 
   const handlePrevProject = () => {
+    if (!selectedProject) return;
     const currentIndex = filteredItems.findIndex(item => item.id === selectedProject.id);
     const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
     setSelectedProject(filteredItems[prevIndex]);
@@ -136,7 +137,6 @@ const Portfolio = () => {
       <Modal 
         isOpen={!!selectedProject} 
         onClose={() => setSelectedProject(null)}
-        className="max-w-4xl rounded-2xl overflow-hidden"
       >
         {selectedProject && (
           <div className="bg-white dark:bg-gray-800">
@@ -150,7 +150,8 @@ const Portfolio = () => {
               
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors"
+                className="absolute top-4 right-4 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5 text-white" />
               </button>
@@ -159,13 +160,15 @@ const Portfolio = () => {
                 <>
                   <button 
                     onClick={handlePrevProject}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                    aria-label="Previous project"
                   >
                     <ChevronLeft className="w-5 h-5 text-white" />
                   </button>
                   <button 
                     onClick={handleNextProject}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                    aria-label="Next project"
                   >
                     <ChevronRight className="w-5 h-5 text-white" />
                   </button>
@@ -174,23 +177,27 @@ const Portfolio = () => {
             </div>
             
             <div className="p-8">
-              <div className="flex justify-between items-start mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-4">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold mb-2">{selectedProject.title}</h3>
-                  <p className="text-accent font-medium">{selectedProject.category}</p>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium">{selectedProject.category}</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-shrink-0">
                   {selectedProject.liveUrl && (
-                    <Button variant="primary" size="sm" className="rounded-full">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
+                    <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="primary" size="sm" className="rounded-full">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </a>
                   )}
                   {selectedProject.githubUrl && (
-                    <Button variant="outline" size="sm" className="rounded-full">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
+                    <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="rounded-full">
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    </a>
                   )}
                 </div>
               </div>
@@ -205,27 +212,13 @@ const Portfolio = () => {
                   {selectedProject.techStack.map(tech => (
                     <span 
                       key={tech}
-                      className="px-3 py-1.5 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light rounded-full text-sm font-medium"
+                      className="px-3 py-1.5 bg-primary/10 text-primary dark:bg-primary/20 rounded-full text-sm font-medium"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              {selectedProject.features && (
-                <div className="mb-8">
-                  <h4 className="font-semibold mb-3 text-gray-800 dark:text-gray-200">Key Features</h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {selectedProject.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-primary mr-2">•</span>
-                        <span className="text-gray-600 dark:text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           </div>
         )}
