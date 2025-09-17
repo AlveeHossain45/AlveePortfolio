@@ -28,7 +28,7 @@ export default [
     description: "A robust inventory system to track stock levels, customer orders, profitability, and delivery logistics, ensuring efficient business operations.",
     techStack: ["React", "Node.js", "Tailwind CSS"],
     tags: ["web", "react"],
-    liveUrl: "https://aicinventoryapp.netlify.app/",
+    liveUrl: "https://samisahil.github.io/aicinventory/",
     githubUrl: "https://github.com/AlveeHossain45"
   }
 ];
