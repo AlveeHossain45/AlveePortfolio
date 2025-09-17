@@ -2,7 +2,7 @@
 export default [
   {
     id: 1,
-    title: "School Management System",
+    title: "School Management System Premium",
     category: "Web Development",
     // দ্রষ্টব্য: এই ছবিটি একটি placeholder। আপনার ছবিটি public ফোল্ডারে রেখে এখানে তার পাথ দিন।
     // যেমন: image: "/school-management.png",
@@ -15,9 +15,9 @@ export default [
   },
   {
     id: 2,
-    title: "Weather App",
-    category: "Mobile App",
-    image: "https://images.unsplash.com/photo-1601297183305-6df142704ea2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    title: "School Management System BAsic",
+    category: "Web Development",
+    image: "school1.png",
     description: "A weather application that provides real-time weather data and forecasts for locations worldwide.",
     techStack: ["React Native", "API Integration", "JavaScript"],
     tags: ["mobile", "react"]
