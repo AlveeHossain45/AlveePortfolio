@@ -15,7 +15,7 @@ export default [
   },
   {
     id: 2,
-    title: "School Management System BAsic",
+    title: "School Management System Basic",
     category: "Web Development",
     image: "school1.png",
     description: "A weather application that provides real-time weather data and forecasts for locations worldwide.",
