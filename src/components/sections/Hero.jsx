@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Building } from 'lucide-react'; // <-- এই আইকনটি ইম্পোর্ট করুন
+// import { Building } from 'lucide-react'; // <-- এই লাইনটি মুছে ফেলা হয়েছে
 import profile from '../../data/profile';
 import Button from '../ui/Button.jsx';
 
@@ -35,17 +35,15 @@ const Hero = () => {
               </Button>
             </Link>
             
-            {/* আপনার CV লিঙ্ক */}
             <a href="/Alvee_CV.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
                 View CV
               </Button>
             </a>
 
-            {/* নতুন যোগ করা "View My Company" বাটন */}
+            {/* "View My Company" বাটন (আইকন ছাড়া) */}
             <a href="https://onexero.netlify.app" target="_blank" rel="noopener noreferrer">
               <Button variant="primary" size="lg" className="bg-green-600 hover:bg-green-700 focus:ring-green-500">
-                <Building className="w-5 h-5 mr-2" /> {/* আইকন যোগ করা হয়েছে */}
                 View My Company
               </Button>
             </a>
