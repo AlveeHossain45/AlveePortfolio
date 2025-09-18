@@ -11,7 +11,7 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const filters = ['all', 'web', 'mobile', 'design']; // 'other' সরানো হয়েছে যদি প্রয়োজন না হয়
+  const filters = ['all', 'web', 'mobile', 'design'];
 
   const filteredItems = activeFilter === 'all' 
     ? portfolioItems 
@@ -188,14 +188,6 @@ const Portfolio = () => {
                       <Button variant="primary" size="sm" className="rounded-full">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
-                      </Button>
-                    </a>
-                  )}
-                  {selectedProject.githubUrl && (
-                    <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="sm" className="rounded-full">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
                       </Button>
                     </a>
                   )}
