@@ -34,10 +34,11 @@ const Hero = () => {
               </Button>
             </Link>
             
-            {/* এই অংশটি আপনার CV ডাউনলোডের জন্য কাজ করবে */}
-            <a href="/Alvee_CV.pdf" download="Alvee_CV.pdf">
+            {/* এই লিঙ্কটি এখন সঠিকভাবে কাজ করবে */}
+            
+             <a href="/Alvee_CV.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
-                Download CV
+                View CV
               </Button>
             </a>
           </div>
