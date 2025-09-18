@@ -1,29 +1,15 @@
 // src/components/sections/Hero.jsx
 import React from 'react';
-import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // <-- react-router-dom থেকে Link ইম্পোর্ট করুন
+import { Link } from 'react-router-dom';
 import profile from '../../data/profile';
 import Button from '../ui/Button.jsx';
 
 const Hero = () => {
-  const heroRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const { current } = heroRef;
-    if (!current) return;
-    
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
-    
-    current.style.transform = `translate(${x * 20}px, ${y * 20}px) rotate3d(${x}, ${y}, 0, ${x * 5}deg)`;
-  };
-
   return (
     <section 
-      id="home" // <-- হোম সেকশনের জন্য একটি আইডি যোগ করুন
+      id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      onMouseMove={handleMouseMove}
     >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
         <motion.div 
@@ -47,7 +33,8 @@ const Hero = () => {
                 View My Work
               </Button>
             </Link>
-            {/* Download CV বাটনটি এখন কাজ করবে */}
+            
+            {/* এই অংশটি আপনার CV ডাউনলোডের জন্য কাজ করবে */}
             <a href="/Alvee_CV.pdf" download="Alvee_CV.pdf">
               <Button variant="outline" size="lg">
                 Download CV
@@ -57,7 +44,6 @@ const Hero = () => {
         </motion.div>
         
         <motion.div 
-          ref={heroRef}
           className="flex-1 flex justify-center mt-8 md:mt-0"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}

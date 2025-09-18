@@ -111,11 +111,9 @@ const About = () => {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <Card hoverable className="p-6 text-center relative overflow-hidden group h-full flex flex-col">
-                <div className="absolute -right-6 -top-6 w-20 h-20 rounded-full bg-primary/10 group-hover:scale-110 transition-transform"></div>
-                <div className="absolute -left-6 -bottom-6 w-16 h-16 rounded-full bg-purple-500/10 group-hover:scale-110 transition-transform"></div>
-                
-                <div className="relative z-10 flex-grow">
+              <Card hoverable className="p-6 text-center h-full flex flex-col">
+                {/* অতিরিক্ত ডিজাইন এখান থেকে সরিয়ে দেওয়া হয়েছে */}
+                <div className="flex-grow">
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Award className="w-8 h-8 text-primary" />
                   </div>
@@ -132,11 +130,9 @@ const About = () => {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <Card hoverable className="p-6 text-center relative overflow-hidden group h-full flex flex-col">
-                <div className="absolute -right-6 -top-6 w-20 h-20 rounded-full bg-primary/10 group-hover:scale-110 transition-transform"></div>
-                <div className="absolute -left-6 -bottom-6 w-16 h-16 rounded-full bg-purple-500/10 group-hover:scale-110 transition-transform"></div>
-                
-                <div className="relative z-10 flex-grow">
+              <Card hoverable className="p-6 text-center h-full flex flex-col">
+                 {/* অতিরিক্ত ডিজাইন এখান থেকে সরিয়ে দেওয়া হয়েছে */}
+                <div className="flex-grow">
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Award className="w-8 h-8 text-primary" />
                   </div>
@@ -154,11 +150,9 @@ const About = () => {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <Card hoverable className="p-6 text-center relative overflow-hidden group h-full flex flex-col">
-                <div className="absolute -right-6 -top-6 w-20 h-20 rounded-full bg-primary/10 group-hover:scale-110 transition-transform"></div>
-                <div className="absolute -left-6 -bottom-6 w-16 h-16 rounded-full bg-purple-500/10 group-hover:scale-110 transition-transform"></div>
-                
-                <div className="relative z-10 flex-grow">
+              <Card hoverable className="p-6 text-center h-full flex flex-col">
+                 {/* অতিরিক্ত ডিজাইন এখান থেকে সরিয়ে দেওয়া হয়েছে */}
+                <div className="flex-grow">
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Award className="w-8 h-8 text-primary" />
                   </div>

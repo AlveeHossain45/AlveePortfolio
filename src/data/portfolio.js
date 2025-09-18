@@ -28,7 +28,7 @@ export default [
     description: "A modern and clean inventory management system with smooth animations and responsive layout.",
     techStack: ["React", "Node.js", "Tailwind CSS"],
     tags: ["web", "react"],
-    liveUrl: "https://aicinventoryapp.netlify.app/",
+    liveUrl: "https://samisahil.github.io/aicinventory/",
     githubUrl: "https://github.com/AlveeHossain45"
   }
 ];
