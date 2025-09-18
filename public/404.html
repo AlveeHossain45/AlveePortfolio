@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Alvee Portfolio - Redirecting...</title>
+    <script type="text/javascript">
+      // আপনার রিপোজিটরির নামটি এখানে দিন
+      var repoName = 'AlveePortfolio';
+
+      // বর্তমান পাথ এবং কোয়েরি স্ট্রিং নিন
+      var path = window.location.pathname;
+      var search = window.location.search;
+
+      // যদি পাথ রিপোজিটরির নামের মধ্যে থাকে, তবে সেই অংশটুকু বাদ দিন
+      var segment = path.split('/').filter(function (el) { return el.length > 0; })[0];
+      if (segment === repoName) {
+        path = path.replace('/' + repoName, '');
+      }
+      
+      // নতুন URL তৈরি করুন এবং sessionStorage-এ সেভ করুন
+      var newPath = path + search;
+      sessionStorage.redirect = newPath;
+
+      // মূল index.html ফাইলে রিডাইরেক্ট করুন
+      window.location.replace(window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/' + repoName + '/');
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

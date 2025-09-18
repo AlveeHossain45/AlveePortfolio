@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Meta Tags -->
@@ -15,14 +15,14 @@
     <meta property="og:title" content="Alvee - CSE Student & Aspiring Software Engineer" />
     <meta property="og:description" content="Personal portfolio of Alvee, a CSE student and aspiring software engineer." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://alvee-portfolio.com" />
-    <meta property="og:image" content="https://alvee-portfolio.com/og-image.jpg" />
+    <meta property="og:url" content="https://alveehossain45.github.io/AlveePortfolio/" />
+    <meta property="og:image" content="https://alveehossain45.github.io/AlveePortfolio/og-image.jpg" />
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Alvee - CSE Student & Aspiring Software Engineer" />
     <meta name="twitter:description" content="Personal portfolio of Alvee, a CSE student and aspiring software engineer." />
-    <meta name="twitter:image" content="https://alvee-portfolio.com/twitter-image.jpg" />
+    <meta name="twitter:image" content="https://alveehossain45.github.io/AlveePortfolio/twitter-image.jpg" />
     
     <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
       "@type": "Person",
       "name": "Alvee",
       "jobTitle": "CSE Student & Aspiring Software Engineer",
-      "url": "https://alvee-portfolio.com",
+      "url": "https://alveehossain45.github.io/AlveePortfolio/",
       "sameAs": [
         "https://github.com/AlveeHossain45",
         "https://linkedin.com/in/replace",
@@ -43,6 +43,23 @@
       ]
     }
     </script>
+    
+    <!-- === GitHub Pages SPA Redirect Script (START) === -->
+    <!-- This script handles client-side routing on refresh in GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <!-- === GitHub Pages SPA Redirect Script (END) === -->
+
   </head>
   <body>
     <div id="root"></div>
