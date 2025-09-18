@@ -16,7 +16,7 @@ export default [
     title: "School Management System Basic",
     category: "Web Development",
     image: "/school1.png", // public ফোল্ডারে থাকা ছবির পাথ
-    description: "A weather application that provides real-time weather data and forecasts for locations worldwide.",
+    description: "School Management System Basic is a simple software to manage students, attendance, grades, and class schedules easily. It helps schools stay organized and save time.",
     techStack: ["React Native", "API Integration", "JavaScript"],
     tags: ["mobile", "react"]
   },
