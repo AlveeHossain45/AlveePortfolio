@@ -12,12 +12,12 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
-      {/* পরিবর্তন: লেআউট আগের মতো করা হয়েছে */}
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left">
+      <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
         
-        {/* Left Content: Text and Buttons */}
+        {/* Left Content: Text and Buttons (ডেস্কটপে বামে, মোবাইলে উপরে) */}
+        {/* পরিবর্তন: 'items-center' এবং 'md:items-start' ক্লাস যোগ করা হয়েছে */}
         <motion.div 
-          className="flex-1"
+          className="flex-1 md:order-1 flex flex-col items-center md:items-start"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -39,7 +39,6 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Link to="/portfolio">
-              {/* পরিবর্তন: বাটনের রঙ আগের মতো primary করা হয়েছে */}
               <Button variant="primary" size="lg">
                 View My Work
               </Button>
@@ -72,9 +71,9 @@ const Hero = () => {
           </motion.div>
         </motion.div>
         
-        {/* Right Content: Profile Picture */}
+        {/* Right Content: Profile Picture (ডেস্কটপে ডানে, মোবাইলে নিচে) */}
         <motion.div 
-          className="flex-1 flex justify-center mt-8 md:mt-0"
+          className="flex-1 flex justify-center mt-8 md:mt-0 md:order-2"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
