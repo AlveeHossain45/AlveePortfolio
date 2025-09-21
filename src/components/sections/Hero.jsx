@@ -12,17 +12,16 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+      <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
         
         {/* Left Content: Text and Buttons (ডেস্কটপে বামে, মোবাইলে উপরে) */}
-        {/* পরিবর্তন: 'items-center' এবং 'md:items-start' ক্লাস যোগ করা হয়েছে */}
         <motion.div 
           className="flex-1 md:order-1 flex flex-col items-center md:items-start"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
             Hi, I'm <span className="text-primary">{profile.name}</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
@@ -79,7 +78,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="relative group">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
               <img 
                 src={profile.photo} 
                 alt={profile.name}
