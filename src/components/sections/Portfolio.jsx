@@ -1,5 +1,5 @@
 // src/components/sections/Portfolio.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, ChevronRight, ChevronLeft } from 'lucide-react';
 import Button from '../ui/Button.jsx';
@@ -10,6 +10,8 @@ import portfolioItems from '../../data/portfolio';
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
+  // নতুন state: 현재 ছবির index ট্র্যাক করার জন্য
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filters = ['all', 'web', 'mobile', 'design'];
 
@@ -17,18 +19,25 @@ const Portfolio = () => {
     ? portfolioItems 
     : portfolioItems.filter(item => item.tags.includes(activeFilter));
 
-  const handleNextProject = () => {
+  // যখন একটি নতুন প্রজেক্ট সিলেক্ট করা হবে, তখন ছবির index রিসেট হবে
+  useEffect(() => {
+    if (selectedProject) {
+      setCurrentImageIndex(0);
+    }
+  }, [selectedProject]);
+
+  // পরের ছবিতে যাওয়ার ফাংশন
+  const handleNextImage = () => {
     if (!selectedProject) return;
-    const currentIndex = filteredItems.findIndex(item => item.id === selectedProject.id);
-    const nextIndex = (currentIndex + 1) % filteredItems.length;
-    setSelectedProject(filteredItems[nextIndex]);
+    const nextIndex = (currentImageIndex + 1) % selectedProject.images.length;
+    setCurrentImageIndex(nextIndex);
   };
 
-  const handlePrevProject = () => {
+  // আগের ছবিতে যাওয়ার ফাংশন
+  const handlePrevImage = () => {
     if (!selectedProject) return;
-    const currentIndex = filteredItems.findIndex(item => item.id === selectedProject.id);
-    const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
-    setSelectedProject(filteredItems[prevIndex]);
+    const prevIndex = (currentImageIndex - 1 + selectedProject.images.length) % selectedProject.images.length;
+    setCurrentImageIndex(prevIndex);
   };
 
   return (
@@ -90,7 +99,7 @@ const Portfolio = () => {
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
                   <div className="h-60 overflow-hidden">
                     <img 
-                      src={item.image} 
+                      src={item.images[0]} // থাম্বনেইলের জন্য প্রথম ছবিটি ব্যবহার করা হচ্ছে
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -141,11 +150,19 @@ const Portfolio = () => {
         {selectedProject && (
           <div className="bg-white dark:bg-gray-800">
             <div className="relative h-72 overflow-hidden">
-              <img 
-                src={selectedProject.image} 
-                alt={selectedProject.title}
-                className="w-full h-full object-cover"
-              />
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={currentImageIndex}
+                  src={selectedProject.images[currentImageIndex]}
+                  alt={`${selectedProject.title} - view ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </AnimatePresence>
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               
               <button 
@@ -156,22 +173,27 @@ const Portfolio = () => {
                 <X className="w-5 h-5 text-white" />
               </button>
               
-              {filteredItems.length > 1 && (
+              {/* ছবি পরিবর্তনের জন্য বাটন (যদি একাধিক ছবি থাকে) */}
+              {selectedProject.images.length > 1 && (
                 <>
                   <button 
-                    onClick={handlePrevProject}
+                    onClick={handlePrevImage}
                     className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
                     aria-label="Previous project"
                   >
                     <ChevronLeft className="w-5 h-5 text-white" />
                   </button>
                   <button 
-                    onClick={handleNextProject}
+                    onClick={handleNextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
                     aria-label="Next project"
                   >
                     <ChevronRight className="w-5 h-5 text-white" />
                   </button>
+                  {/* ছবির কাউন্টার */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full">
+                    {currentImageIndex + 1} / {selectedProject.images.length}
+                  </div>
                 </>
               )}
             </div>
@@ -188,6 +210,14 @@ const Portfolio = () => {
                       <Button variant="primary" size="sm" className="rounded-full">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
+                      </Button>
+                    </a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="rounded-full">
+                        <Github className="w-4 h-4 mr-2" />
+                        GitHub
                       </Button>
                     </a>
                   )}
