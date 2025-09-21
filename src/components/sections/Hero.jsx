@@ -12,11 +12,9 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
-      {/* পরিবর্তন ১: 'text-center' সরিয়ে 'text-left' করা হয়েছে */}
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-left">
         
-        {/* Left Content: Text and Buttons (ডেস্কটপে বামে, মোবাইলে উপরে) */}
-        {/* পরিবর্তন ২: 'items-center' সরিয়ে 'items-start' করা হয়েছে */}
+        {/* Left Content: Text and Buttons */}
         <motion.div 
           className="flex-1 md:order-1 flex flex-col items-start"
           initial={{ opacity: 0, x: -50 }}
@@ -29,13 +27,13 @@ const Hero = () => {
           <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
             {profile.role}
           </h2>
-          {/* পরিবর্তন ৩: 'mx-auto' ক্লাসটি সরানো হয়েছে */}
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
             {profile.about}
           </p>
 
+          {/* পরিবর্তন: 'flex-col sm:flex-row' কে 'flex-row' করা হয়েছে */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-start gap-4"
+            className="flex flex-row items-center justify-start gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -73,9 +71,9 @@ const Hero = () => {
           </motion.div>
         </motion.div>
         
-        {/* Right Content: Profile Picture (ডেস্কটপে ডানে, মোবাইলে নিচে) */}
+        {/* Right Content: Profile Picture */}
         <motion.div 
-          className="flex-1 flex justify-center mt-8 md:mt-0 md:order-2"
+          className="flex-1 flex justify-center mt-12 md:mt-0 md:order-2"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
