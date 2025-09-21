@@ -31,6 +31,7 @@ const Hero = () => {
             {profile.about}
           </p>
 
+          {/* পরিবর্তন: বাটন গ্রুপ এবং কোম্পানির লিঙ্ক আগের মতো করা হয়েছে */}
           <motion.div 
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
             initial={{ opacity: 0, y: 20 }}
