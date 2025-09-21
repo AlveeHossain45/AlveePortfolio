@@ -30,7 +30,7 @@ export default [
     // এই প্রজেক্টের জন্য ছবি যোগ করুন
     images: [
       "/school1.png",             // <-- প্রথম ছবি
-      "/school1-details-1.png",   // <-- দ্বিতীয় ছবি
+     // "/school1-details-1.png",   // <-- দ্বিতীয় ছবি
       // "/school1-details-2.png", // <-- আপনার যতগুলো ছবি আছে, যোগ করুন
     ],
     
@@ -47,7 +47,7 @@ export default [
     images: [
       "/school3.png",
       "/inventory-details-1.png",
-      "/inventory-details-2.png",
+     // "/inventory-details-2.png",
       // "/inventory-details-3.png",
       // "/inventory-details-4.png", // যত খুশি যোগ করুন
     ],
