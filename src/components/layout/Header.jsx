@@ -1,25 +1,67 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // <-- AnimatePresence ইম্পোর্ট করুন
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
 import Button from '../ui/Button.jsx';
+import useScrollPosition from '../../hooks/useScrollPosition'; // <-- Scroll Position Hook
 
 const Header = ({ theme, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const scrollPosition = useScrollPosition();
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+
+  // Navbar কখন দৃশ্যমান হবে তা নির্ধারণ
+  const isScrolled = scrollPosition > 50;
 
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Pricing', href: '/#pricing' }, // <-- নতুন Pricing বাটন
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
+  
+  // স্মুথ স্ক্রল ফাংশন
+  const handleScrollTo = (e, targetId) => {
+    if (isHomePage) {
+      e.preventDefault();
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsMenuOpen(false);
+    }
+    // অন্য পেইজে থাকলে ডিফল্ট আচরণ কাজ করবে (e.g., /#pricing)
+  };
+
+  // মোবাইল মেন্যুর জন্য অ্যানিমেশন ভ্যারিয়েন্ট
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, x: '100%' },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        type: 'tween', 
+        duration: 0.3, 
+        staggerChildren: 0.05 // <-- আইটেমগুলো এক এক করে আসবে
+      } 
+    },
+    exit: { opacity: 0, x: '100%' }
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-40 glass-card"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'glass-card shadow-lg' : 'bg-transparent'}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -36,18 +78,35 @@ const Header = ({ theme, toggleTheme }) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.href}
-              className={({ isActive }) =>
-                `text-lg font-medium hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : ''}`
-              }
-            >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </NavLink>
-          ))}
+          {navItems.map((item) => {
+            if (item.href.startsWith('/#')) {
+              // স্ক্রল লিঙ্কের জন্য
+              return (
+                <a
+                  key={item.name}
+                  href={item.href.split('#')[1]}
+                  onClick={(e) => handleScrollTo(e, item.href.substring(2))}
+                  className="text-lg font-medium hover:text-primary transition-colors relative group text-gray-800 dark:text-gray-300"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+              );
+            }
+            // সাধারণ পেজ লিঙ্কের জন্য
+            return (
+              <NavLink
+                key={item.name}
+                to={item.href}
+                className={({ isActive }) =>
+                  `text-lg font-medium hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : 'text-gray-800 dark:text-gray-300'}`
+                }
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              </NavLink>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -59,13 +118,12 @@ const Header = ({ theme, toggleTheme }) => {
             </Button>
           </Link>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 z-50" // <-- z-index যোগ করা হয়েছে
+            className="md:hidden p-2 z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
@@ -74,30 +132,42 @@ const Header = ({ theme, toggleTheme }) => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            // className পরিবর্তন করে সলিড ব্যাকগ্রাউন্ড দেওয়া হয়েছে
             className="md:hidden absolute top-0 left-0 right-0 h-screen bg-white dark:bg-night-background p-6 pt-24"
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <nav className="flex flex-col items-center justify-center h-full gap-8">
+            <motion.nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-2xl font-medium hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                <motion.div key={item.name} variants={menuItemVariants}>
+                  {item.href.startsWith('/#') ? (
+                    <a
+                      href={item.href.split('#')[1]}
+                      onClick={(e) => handleScrollTo(e, item.href.substring(2))}
+                      className="text-2xl font-medium hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-2xl font-medium hover:text-primary transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </motion.div>
               ))}
-              <Link to="/contact">
-                <Button variant="primary" size="lg" className="mt-8">
-                  Hire Me
-                </Button>
-              </Link>
-            </nav>
+              <motion.div variants={menuItemVariants}>
+                <Link to="/contact">
+                  <Button variant="primary" size="lg" className="mt-8">
+                    Hire Me
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>

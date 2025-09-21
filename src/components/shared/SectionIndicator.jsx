@@ -10,7 +10,7 @@ const SectionIndicator = () => {
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'portfolio', label: 'Portfolio' },
-    // { id: 'testimonials', label: 'Testimonials' }, <-- এই লাইনটি মুছে ফেলা হয়েছে
+    { id: 'pricing', label: 'Pricing' }, // <-- Pricing এখানেও যোগ করা হয়েছে
     { id: 'contact', label: 'Contact' }
   ];
 
