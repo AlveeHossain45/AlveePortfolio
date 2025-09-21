@@ -20,7 +20,7 @@ export default [
     techStack: ["React", "Node.js", "MongoDB", "Express"],
     tags: ["web", "react"],
     liveUrl: "https://alveeweb.netlify.app/",
-    githubUrl: "https://github.com/AlveeHossain45"
+    
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ export default [
     techStack: ["React", "Node.js", "Tailwind CSS"],
     tags: ["web", "react"],
     liveUrl: "https://samisahil.github.io/aicinventory/",
-    githubUrl: "https://github.com/AlveeHossain45"
+    
   }
   // আপনি নতুন প্রজেক্ট যোগ করলে, সেটির জন্যও `images` অ্যারে তৈরি করবেন
 ];
