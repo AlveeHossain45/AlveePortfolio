@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-// import { Building } from 'lucide-react'; // <-- এই লাইনটি মুছে ফেলা হয়েছে
+import { Briefcase } from 'lucide-react'; // <-- নতুন আইকন ইম্পোর্ট করা হয়েছে
 import profile from '../../data/profile';
 import Button from '../ui/Button.jsx';
 
@@ -10,9 +10,11 @@ const Hero = () => {
   return (
     <section 
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left">
+        
+        {/* Left Content: Text and Buttons */}
         <motion.div 
           className="flex-1"
           initial={{ opacity: 0, x: -50 }}
@@ -22,13 +24,20 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Hi, I'm <span className="text-primary">{profile.name}</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-accent mb-6">
+          <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
             {profile.role}
           </h2>
-          <p className="text-lg mb-8 max-w-2xl">
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto md:mx-0">
             {profile.about}
           </p>
-          <div className="flex flex-wrap gap-4">
+
+          {/* পরিবর্তন: নতুন বাটন গ্রুপ */}
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <Link to="/portfolio">
               <Button variant="primary" size="lg">
                 View My Work
@@ -37,36 +46,51 @@ const Hero = () => {
             
             <a href="/Alvee_CV.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
-                View CV
+                Download CV
               </Button>
             </a>
+          </motion.div>
 
-            {/* "View My Company" বাটন (আইকন ছাড়া) */}
-            <a href="https://onexero.netlify.app" target="_blank" rel="noopener noreferrer">
-              <Button variant="primary" size="lg" className="bg-green-600 hover:bg-green-700 focus:ring-green-500">
-                View My Company
-              </Button>
+          {/* পরিবর্তন: কোম্পানির জন্য নতুন লিঙ্ক */}
+          <motion.div
+            className="mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <a 
+              href="https://onexero.netlify.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors group"
+            >
+              <Briefcase className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
+              <span className="font-medium">
+                I also run a software company: <strong className="font-bold text-gray-700 dark:text-gray-200 group-hover:text-primary">OneZero</strong>
+              </span>
             </a>
-          </div>
+          </motion.div>
         </motion.div>
         
+        {/* Right Content: Profile Picture */}
         <motion.div 
           className="flex-1 flex justify-center mt-8 md:mt-0"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="relative">
+          <div className="relative group">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
               <img 
                 src={profile.photo} 
                 alt={profile.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <div className="absolute -inset-4 rounded-full border border-primary/20 animate-pulse"></div>
           </div>
         </motion.div>
+
       </div>
       
       {/* Animated background elements */}
