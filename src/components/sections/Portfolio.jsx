@@ -10,7 +10,6 @@ import portfolioItems from '../../data/portfolio';
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
-  // নতুন state: 현재 ছবির index ট্র্যাক করার জন্য
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filters = ['all', 'web', 'mobile', 'design'];
@@ -19,21 +18,18 @@ const Portfolio = () => {
     ? portfolioItems 
     : portfolioItems.filter(item => item.tags.includes(activeFilter));
 
-  // যখন একটি নতুন প্রজেক্ট সিলেক্ট করা হবে, তখন ছবির index রিসেট হবে
   useEffect(() => {
     if (selectedProject) {
       setCurrentImageIndex(0);
     }
   }, [selectedProject]);
 
-  // পরের ছবিতে যাওয়ার ফাংশন
   const handleNextImage = () => {
     if (!selectedProject) return;
     const nextIndex = (currentImageIndex + 1) % selectedProject.images.length;
     setCurrentImageIndex(nextIndex);
   };
 
-  // আগের ছবিতে যাওয়ার ফাংশন
   const handlePrevImage = () => {
     if (!selectedProject) return;
     const prevIndex = (currentImageIndex - 1 + selectedProject.images.length) % selectedProject.images.length;
@@ -99,7 +95,7 @@ const Portfolio = () => {
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
                   <div className="h-60 overflow-hidden">
                     <img 
-                      src={item.images[0]} // থাম্বনেইলের জন্য প্রথম ছবিটি ব্যবহার করা হচ্ছে
+                      src={item.images[0]}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -128,19 +124,6 @@ const Portfolio = () => {
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {filteredItems.length === 0 && (
-          <motion.div 
-            className="text-center py-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="text-5xl mb-4">🔍</div>
-            <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-2">No projects found</h3>
-            <p className="text-gray-500 dark:text-gray-500">Try selecting a different category</p>
-          </motion.div>
-        )}
       </div>
 
       <Modal 
@@ -149,13 +132,17 @@ const Portfolio = () => {
       >
         {selectedProject && (
           <div className="bg-white dark:bg-gray-800">
-            <div className="relative h-72 overflow-hidden">
+            {/* পরিবর্তন ১: ছবির কন্টেইনারের স্টাইল পরিবর্তন করা হয়েছে */}
+            {/* h-72 কে h-64 sm:h-80 করা হয়েছে এবং একটি কালো ব্যাকগ্রাউন্ড যোগ করা হয়েছে */}
+            <div className="relative h-64 sm:h-80 bg-black/80 dark:bg-black">
               <AnimatePresence initial={false}>
                 <motion.img
                   key={currentImageIndex}
                   src={selectedProject.images[currentImageIndex]}
                   alt={`${selectedProject.title} - view ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover"
+                  // পরিবর্তন ২: object-cover কে object-contain করা হয়েছে
+                  // এর ফলে ছবিটি না কেটে পুরোটা দেখাবে
+                  className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -163,35 +150,31 @@ const Portfolio = () => {
                 />
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                className="absolute top-4 right-4 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-20"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5 text-white" />
               </button>
               
-              {/* ছবি পরিবর্তনের জন্য বাটন (যদি একাধিক ছবি থাকে) */}
               {selectedProject.images.length > 1 && (
                 <>
                   <button 
                     onClick={handlePrevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-20"
                     aria-label="Previous project"
                   >
                     <ChevronLeft className="w-5 h-5 text-white" />
                   </button>
                   <button 
                     onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-10"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors z-20"
                     aria-label="Next project"
                   >
                     <ChevronRight className="w-5 h-5 text-white" />
                   </button>
-                  {/* ছবির কাউন্টার */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 text-white text-sm rounded-full z-10">
                     {currentImageIndex + 1} / {selectedProject.images.length}
                   </div>
                 </>
