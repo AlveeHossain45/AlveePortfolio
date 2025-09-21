@@ -3,6 +3,7 @@ import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Services from '../components/sections/Services';
 import Portfolio from '../components/sections/Portfolio';
+import Pricing from '../components/sections/Pricing'; // <-- নতুন কম্পোনেন্ট ইম্পোর্ট করুন
 import Contact from '../components/sections/Contact';
 import Newsletter from '../components/sections/Newsletter';
 import FAQ from '../components/sections/FAQ';
@@ -17,7 +18,7 @@ const Home = () => {
       <About />
       <Services />
       <Portfolio />
-      {/* Testimonials বিভাগটি এখান থেকে সরিয়ে দেওয়া হয়েছে */}
+      <Pricing /> {/* <-- নতুন প্রাইসিং সেকশনটি এখানে যুক্ত করুন */}
       <FAQ />
       <Contact />
       <Newsletter />
