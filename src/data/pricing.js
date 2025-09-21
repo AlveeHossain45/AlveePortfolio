@@ -1,5 +1,28 @@
 // src/data/pricing.js
-import { Star, Zap, Tool } from 'lucide-react';
+import { Star, Zap, Wrench, CheckCircle, Smartphone, LayoutTemplate, Mail, TrendingUp, LifeBuoy, Database, Share2, ShoppingCart, Code, UserCheck, KeyRound } from 'lucide-react';
+
+// ফিচারগুলোর জন্য আইকন ম্যাপ
+export const featureIcons = {
+  "Responsive 1-3 Page Website": Smartphone,
+  "Standard Template Design": LayoutTemplate,
+  "Contact Form Integration": Mail,
+  "Basic SEO Setup": TrendingUp,
+  "30 Days of Free Support": LifeBuoy,
+  "Up to 10 Pages Website": Smartphone,
+  "Custom Premium Design": LayoutTemplate,
+  "Content Management System (CMS)": Database,
+  "Advanced SEO Optimization": TrendingUp,
+  "Social Media Integration": Share2,
+  "90 Days of Free Support": LifeBuoy,
+  "Custom Feature Development": Code,
+  "E-commerce Functionality": ShoppingCart,
+  "API Integrations": Code,
+  "Dedicated Project Manager": UserCheck,
+  "Ongoing Maintenance Plan": LifeBuoy,
+  "Full Ownership of Code": KeyRound,
+  // ডিফল্ট আইকন
+  "default": CheckCircle
+};
 
 export const pricingPlans = [
   {
@@ -15,6 +38,7 @@ export const pricingPlans = [
       "30 Days of Free Support"
     ],
     buttonText: "Get Started",
+    actionLink: "#contact", // <-- বাটনের লিঙ্ক
     icon: Star,
     isFeatured: false
   },
@@ -32,8 +56,9 @@ export const pricingPlans = [
       "90 Days of Free Support"
     ],
     buttonText: "Choose Premium",
+    actionLink: "#contact", // <-- বাটনের লিঙ্ক
     icon: Zap,
-    isFeatured: true // এই প্ল্যানটি হাইলাইট করা হবে
+    isFeatured: true
   },
   {
     title: "Custom Project",
@@ -49,7 +74,8 @@ export const pricingPlans = [
       "Full Ownership of Code"
     ],
     buttonText: "Contact Me",
-    icon: Tool,
+    actionLink: "#contact", // <-- বাটনের লিঙ্ক
+    icon: Wrench,
     isFeatured: false
   }
 ];
