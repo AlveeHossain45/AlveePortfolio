@@ -47,7 +47,7 @@ export default [
     images: [
       "/school3.png",
       "/inventory-details-1.png",
-     // "/inventory-details-2.png",
+    // "/inventory-details-2.png",
       // "/inventory-details-3.png",
       // "/inventory-details-4.png", // যত খুশি যোগ করুন
     ],
