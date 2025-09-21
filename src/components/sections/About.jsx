@@ -34,7 +34,6 @@ const About = () => {
           >
             <div className="relative">
               <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl relative z-10">
-                {/* পরিবর্তন: grayscale ক্লাসগুলো সরিয়ে দেওয়া হয়েছে */}
                 <img 
                   src={profile.photo1} 
                   alt={profile.name}
@@ -61,12 +60,12 @@ const About = () => {
             </p>
             
             <div className="space-y-4">
-              {/* পরিবর্তন: প্রতিটি আইটেমের জন্য প্রিমিয়াম আইকন কন্টেইনার যোগ করা হয়েছে */}
               <motion.div 
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30 flex-shrink-0">
+                {/* পরিবর্তন: আইকন কন্টেইনারে প্রিমিয়াম gradient রঙ যোগ করা হয়েছে */}
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
                     <Calendar className="w-8 h-8 text-white drop-shadow-lg" />
                 </div>
@@ -80,7 +79,7 @@ const About = () => {
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30 flex-shrink-0">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
                     <MapPin className="w-8 h-8 text-white drop-shadow-lg" />
                 </div>
@@ -94,7 +93,7 @@ const About = () => {
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30 flex-shrink-0">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
                     <BookOpen className="w-8 h-8 text-white drop-shadow-lg" />
                 </div>
@@ -124,7 +123,6 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* পরিবর্তন: Education কার্ডগুলোর ডিজাইন আপডেট করা হয়েছে */}
             {[
               { title: "B.Sc. in CSE", university: "Uttara University", gpa: "Expected 2027", details: "I am studying in B.Sc in CSE in Uttara University. My expected graduation year is 2027." },
               { title: "HSC", university: "Darunnazat Siddikia Kamil Madrasha", gpa: "GPA: 4.88/5.00", details: "I passed HSC from Darunnazat Siddikia Kamil Madrasha in 2021. My board was Dhaka. I got 4.88 out of 5 from Science." },
@@ -138,7 +136,7 @@ const About = () => {
                 <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="mb-6 flex justify-center">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center relative bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30">
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30">
                         <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"></div>
                         <Award className="w-10 h-10 text-white drop-shadow-lg" />
                     </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Briefcase } from 'lucide-react'; // <-- নতুন আইকন ইম্পোর্ট করা হয়েছে
+import { Briefcase } from 'lucide-react';
 import profile from '../../data/profile';
 import Button from '../ui/Button.jsx';
 
@@ -12,6 +12,7 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
+      {/* পরিবর্তন: লেআউট আগের মতো করা হয়েছে */}
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left">
         
         {/* Left Content: Text and Buttons */}
@@ -31,7 +32,6 @@ const Hero = () => {
             {profile.about}
           </p>
 
-          {/* পরিবর্তন: নতুন বাটন গ্রুপ */}
           <motion.div 
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
             initial={{ opacity: 0, y: 20 }}
@@ -39,6 +39,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Link to="/portfolio">
+              {/* পরিবর্তন: বাটনের রঙ আগের মতো primary করা হয়েছে */}
               <Button variant="primary" size="lg">
                 View My Work
               </Button>
@@ -51,7 +52,6 @@ const Hero = () => {
             </a>
           </motion.div>
 
-          {/* পরিবর্তন: কোম্পানির জন্য নতুন লিঙ্ক */}
           <motion.div
             className="mt-10"
             initial={{ opacity: 0, y: 20 }}
