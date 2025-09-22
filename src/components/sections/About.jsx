@@ -1,10 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, BookOpen, Award, GraduationCap } from 'lucide-react';
+import { Calendar, MapPin, BookOpen, GraduationCap, BookMarked, FileText } from 'lucide-react';
 import profile from '../../data/profile';
 import Card from '../ui/Card.jsx';
 
 const About = () => {
+  // শিক্ষা সংক্রান্ত ডেটা এবং তাদের নিজ নিজ আইকন
+  const educationData = [
+    { 
+      title: "B.Sc. in CSE", 
+      university: "Uttara University", 
+      gpa: "Expected 2027", 
+      details: "I am studying in B.Sc in CSE in Uttara University. My expected graduation year is 2027.",
+      icon: GraduationCap 
+    },
+    { 
+      title: "HSC", 
+      university: "Darunnazat Siddikia Kamil Madrasha", 
+      gpa: "GPA: 4.88/5.00", 
+      details: "I passed HSC from Darunnazat Siddikia Kamil Madrasha in 2021. My board was Dhaka. I got 4.88 out of 5 from Science.",
+      icon: BookMarked
+    },
+    { 
+      title: "SSC", 
+      university: "Darunnazat Siddikia Kamil Madrasha", 
+      gpa: "GPA: 4.78/5.00", 
+      details: "I passed SSC from Darunnazat Siddikia Kamil Madrasha in 2019. My board was Dhaka. I got 4.78 out of 5 from Science.",
+      icon: FileText
+    }
+  ];
+
   return (
     <section id="about" className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-night-background">
       <div className="container mx-auto container-padding">
@@ -61,13 +86,12 @@ const About = () => {
             
             <div className="space-y-4">
               <motion.div 
-                className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                {/* পরিবর্তন: আইকন কন্টেইনারে প্রিমিয়াম gradient রঙ যোগ করা হয়েছে */}
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <Calendar className="w-8 h-8 text-white drop-shadow-lg" />
+                    <Calendar className="w-6 h-6 text-white drop-shadow-lg" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.age} years old</span>
@@ -76,12 +100,12 @@ const About = () => {
               </motion.div>
               
               <motion.div 
-                className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <MapPin className="w-8 h-8 text-white drop-shadow-lg" />
+                    <MapPin className="w-6 h-6 text-white drop-shadow-lg" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.location}</span>
@@ -90,12 +114,12 @@ const About = () => {
               </motion.div>
 
               <motion.div 
-                className="flex items-center gap-5 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <BookOpen className="w-8 h-8 text-white drop-shadow-lg" />
+                    <BookOpen className="w-6 h-6 text-white drop-shadow-lg" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">
@@ -122,39 +146,40 @@ const About = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
           </div>
           
+          {/* =========== পরিবর্তন শুরু =========== */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "B.Sc. in CSE", university: "Uttara University", gpa: "Expected 2027", details: "I am studying in B.Sc in CSE in Uttara University. My expected graduation year is 2027." },
-              { title: "HSC", university: "Darunnazat Siddikia Kamil Madrasha", gpa: "GPA: 4.88/5.00", details: "I passed HSC from Darunnazat Siddikia Kamil Madrasha in 2021. My board was Dhaka. I got 4.88 out of 5 from Science." },
-              { title: "SSC", university: "Darunnazat Siddikia Kamil Madrasha", gpa: "GPA: 4.78/5.00", details: "I passed SSC from Darunnazat Siddikia Kamil Madrasha in 2019. My board was Dhaka. I got 4.78 out of 5 from Science." }
-            ].map((edu, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="mb-6 flex justify-center">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30">
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"></div>
-                        <Award className="w-10 h-10 text-white drop-shadow-lg" />
+            {educationData.map((edu, index) => {
+              const IconComponent = edu.icon; // প্রতিটি কার্ডের জন্য নির্দিষ্ট আইকন
+              return (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="mb-6 flex justify-center">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30">
+                          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"></div>
+                          <IconComponent className="w-8 h-8 text-white drop-shadow-lg" />
+                      </div>
                     </div>
-                  </div>
-                  <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{edu.title}</h4>
-                  <p className="text-gray-600 dark:text-gray-400 mb-3 font-medium">{edu.university}</p>
-                  <div className="my-3">
-                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${edu.gpa.startsWith("GPA") ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-primary/10 text-primary'}`}>
-                      {edu.gpa}
+                    <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{edu.title}</h4>
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 font-medium">{edu.university}</p>
+                    <div className="my-3">
+                      <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${edu.gpa.startsWith("GPA") ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-primary/10 text-primary'}`}>
+                        {edu.gpa}
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 flex-grow">
-                    {edu.details}
-                  </p>
-                </Card>
-              </motion.div>
-            ))}
+                    <p className="text-sm text-gray-500 dark:text-gray-400 flex-grow">
+                      {edu.details}
+                    </p>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
+          {/* =========== পরিবর্তন শেষ =========== */}
         </motion.div>
       </div>
     </section>
