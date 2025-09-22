@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 const SectionIndicator = () => {
   const [activeSection, setActiveSection] = useState('home');
   
+  // <-- Pricing এখান থেকে সরিয়ে দেওয়া হয়েছে -->
   const sections = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'portfolio', label: 'Portfolio' },
-    { id: 'pricing', label: 'Pricing' }, // <-- Pricing এখানেও যোগ করা হয়েছে
     { id: 'contact', label: 'Contact' }
   ];
 

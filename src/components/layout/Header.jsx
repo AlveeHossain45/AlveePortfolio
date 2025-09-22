@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../shared/ThemeToggle';
 import Button from '../ui/Button.jsx';
-import useScrollPosition from '../../hooks/useScrollPosition'; // <-- Scroll Position Hook
+import useScrollPosition from '../../hooks/useScrollPosition';
 
 const Header = ({ theme, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollPosition = useScrollPosition();
-  const location = useLocation();
-
-  const isHomePage = location.pathname === '/';
-
-  // Navbar কখন দৃশ্যমান হবে তা নির্ধারণ
   const isScrolled = scrollPosition > 50;
 
   const navItems = [
@@ -21,25 +16,12 @@ const Header = ({ theme, toggleTheme }) => {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Pricing', href: '/#pricing' }, // <-- নতুন Pricing বাটন
+    // <-- লিঙ্কটি এখন সরাসরি '/pricing' পেইজে যাবে -->
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
-  
-  // স্মুথ স্ক্রল ফাংশন
-  const handleScrollTo = (e, targetId) => {
-    if (isHomePage) {
-      e.preventDefault();
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
-      setIsMenuOpen(false);
-    }
-    // অন্য পেইজে থাকলে ডিফল্ট আচরণ কাজ করবে (e.g., /#pricing)
-  };
 
-  // মোবাইল মেন্যুর জন্য অ্যানিমেশন ভ্যারিয়েন্ট
   const mobileMenuVariants = {
     hidden: { opacity: 0, x: '100%' },
     visible: { 
@@ -48,7 +30,7 @@ const Header = ({ theme, toggleTheme }) => {
       transition: { 
         type: 'tween', 
         duration: 0.3, 
-        staggerChildren: 0.05 // <-- আইটেমগুলো এক এক করে আসবে
+        staggerChildren: 0.05
       } 
     },
     exit: { opacity: 0, x: '100%' }
@@ -78,35 +60,18 @@ const Header = ({ theme, toggleTheme }) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => {
-            if (item.href.startsWith('/#')) {
-              // স্ক্রল লিঙ্কের জন্য
-              return (
-                <a
-                  key={item.name}
-                  href={item.href.split('#')[1]}
-                  onClick={(e) => handleScrollTo(e, item.href.substring(2))}
-                  className="text-lg font-medium hover:text-primary transition-colors relative group text-gray-800 dark:text-gray-300"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                </a>
-              );
-            }
-            // সাধারণ পেজ লিঙ্কের জন্য
-            return (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                className={({ isActive }) =>
-                  `text-lg font-medium hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : 'text-gray-800 dark:text-gray-300'}`
-                }
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-              </NavLink>
-            );
-          })}
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                `text-lg font-medium hover:text-primary transition-colors relative group ${isActive ? 'text-primary' : 'text-gray-800 dark:text-gray-300'}`
+              }
+            >
+              {item.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+            </NavLink>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -141,28 +106,18 @@ const Header = ({ theme, toggleTheme }) => {
             <motion.nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item) => (
                 <motion.div key={item.name} variants={menuItemVariants}>
-                  {item.href.startsWith('/#') ? (
-                    <a
-                      href={item.href.split('#')[1]}
-                      onClick={(e) => handleScrollTo(e, item.href.substring(2))}
-                      className="text-2xl font-medium hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className="text-2xl font-medium hover:text-primary transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
+                  <Link
+                    to={item.href}
+                    className="text-2xl font-medium hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
                 </motion.div>
               ))}
               <motion.div variants={menuItemVariants}>
                 <Link to="/contact">
-                  <Button variant="primary" size="lg" className="mt-8">
+                  <Button variant="primary" size="lg" className="mt-8" onClick={() => setIsMenuOpen(false)}>
                     Hire Me
                   </Button>
                 </Link>

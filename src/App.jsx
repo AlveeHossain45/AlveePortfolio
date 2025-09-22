@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
+import PricingPage from './pages/PricingPage'; // <-- নতুন পেইজ ইম্পোর্ট করুন
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import ContactPage from './pages/ContactPage';
@@ -18,7 +19,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-day-background text-day-text dark:bg-night-background dark:text-night-text transition-colors duration-300">
-      {/* এখান থেকে basename সরিয়ে দেওয়া হয়েছে */}
       <Router>
         <Header theme={theme} toggleTheme={toggleTheme} />
         
@@ -27,6 +27,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/pricing" element={<PricingPage />} /> {/* <-- নতুন রুট যোগ করুন */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<ContactPage />} />
