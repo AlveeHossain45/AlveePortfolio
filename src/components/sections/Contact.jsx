@@ -70,7 +70,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center justify-center p-2 bg-primary/10 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-2xl mb-6">
             <MessageSquare className="w-8 h-8 text-primary" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
@@ -97,7 +97,7 @@ const Contact = () => {
               <motion.div variants={itemVariants}>
                 <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-primary to-purple-600 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -113,7 +113,7 @@ const Contact = () => {
               <motion.div variants={itemVariants}>
                 <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-primary to-purple-600 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -127,7 +127,7 @@ const Contact = () => {
               <motion.div variants={itemVariants}>
                 <Card className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-primary to-purple-600 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -164,7 +164,6 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      icon={<User className="w-4 h-4" />}
                     />
                     
                     <Input
@@ -174,7 +173,6 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      icon={<Mail className="w-4 h-4" />}
                     />
                   </div>
                   
@@ -185,7 +183,6 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    icon={<MessageSquare className="w-4 h-4" />}
                   />
                 
                   <Textarea
@@ -195,7 +192,6 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    icon={<MessageSquare className="w-4 h-4" />}
                   />
                   
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -206,7 +202,7 @@ const Contact = () => {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-center">
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                           Sending...
                         </div>

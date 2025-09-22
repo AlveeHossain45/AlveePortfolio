@@ -5,7 +5,6 @@ import Card from '../ui/Card.jsx';
 import Button from '../ui/Button.jsx';
 import servicesData from '../../data/services.js';
 
-// আইকন স্ট্রিংকে কম্পোনেন্টে ম্যাপ করার জন্য
 const iconMap = {
   Code: Code,
   Smartphone: Smartphone,
@@ -16,7 +15,6 @@ const iconMap = {
 const Services = () => {
   const [showAll, setShowAll] = useState(false);
   const services = servicesData;
-
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
@@ -24,7 +22,6 @@ const Services = () => {
       <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-r from-primary/5 to-purple-600/5"></div>
       <div className="absolute top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 -right-20 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl"></div>
-
       <div className="relative container mx-auto px-4 max-w-7xl">
         <motion.div 
           className="text-center mb-20"
@@ -48,11 +45,7 @@ const Services = () => {
             Expertly crafted digital experiences designed to elevate your brand and accelerate your business growth
           </p>
         </motion.div>
-
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout
-        >
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
           <AnimatePresence mode="popLayout">
             {displayedServices.map((service, index) => {
               const IconComponent = iconMap[service.icon];
@@ -63,12 +56,7 @@ const Services = () => {
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -30, scale: 0.95 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
+                  transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
                   whileHover={{ y: -15, transition: { duration: 0.3 } }}
                   className="group"
                 >
@@ -77,29 +65,16 @@ const Services = () => {
                       <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-primary shadow-lg shadow-primary/30">
                         {IconComponent && <IconComponent className="w-8 h-8 text-white" />}
                       </div>
-                      
-                      <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
-                        {service.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
-                      
+                      <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">{service.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{service.description}</p>
                       <ul className="space-y-3 mb-8">
                         {service.features.map((feature, idx) => (
-                          <motion.li 
-                            key={idx} 
-                            className="flex items-center"
-                            whileHover={{ x: 5 }}
-                            transition={{ duration: 0.2 }}
-                          >
+                          <motion.li key={idx} className="flex items-center" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                             <div className="w-2 h-2 bg-gradient-to-r from-primary to-purple-600 rounded-full mr-3"></div>
                             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{feature}</span>
                           </motion.li>
                         ))}
                       </ul>
-                      
                       <motion.div
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
@@ -115,29 +90,15 @@ const Services = () => {
             })}
           </AnimatePresence>
         </motion.div>
-
         {services.length > 3 && (
-          <motion.div 
-            className="text-center mt-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
+          <motion.div className="text-center mt-16" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
             <Button
               variant="outline"
               size="lg"
               onClick={() => setShowAll(!showAll)}
               className="flex items-center gap-2 mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary"
             >
-              {showAll ? (
-                <>
-                  Show Less <ChevronUp className="w-5 h-5" />
-                </>
-              ) : (
-                <>
-                  View All Services <ChevronDown className="w-5 h-5" />
-                </>
-              )}
+              {showAll ? ( <>Show Less <ChevronUp className="w-5 h-5" /></> ) : ( <>View All Services <ChevronDown className="w-5 h-5" /></>)}
             </Button>
           </motion.div>
         )}

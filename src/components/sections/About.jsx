@@ -47,7 +47,6 @@ const About = () => {
             Get to know more about my background, skills, and experience
           </p>
         </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -58,17 +57,12 @@ const About = () => {
           >
             <div className="relative">
               <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl relative z-10">
-                <img 
-                  src={profile.photo1} 
-                  alt={profile.name}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                />
+                <img src={profile.photo1} alt={profile.name} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
               <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-primary/20 to-purple-600/20 animate-pulse"></div>
             </div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -82,40 +76,37 @@ const About = () => {
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               {profile.about}
             </p>
-            
             <div className="space-y-4">
               <motion.div 
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-white" />
+                  <Calendar className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.age} years old</span>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Experienced and passionate</p>
                 </div>
               </motion.div>
-              
               <motion.div 
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.location}</span>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Based and available for work</p>
                 </div>
               </motion.div>
-
               <motion.div 
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
-                    <BookOpen className="w-6 h-6 text-white" />
+                  <BookOpen className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">
@@ -127,7 +118,6 @@ const About = () => {
             </div>
           </motion.div>
         </div>
-
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,16 +131,11 @@ const About = () => {
             </div>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {educationData.map((edu, index) => {
               const IconComponent = edu.icon;
               return (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                >
+                <motion.div key={index} whileHover={{ y: -8 }} transition={{ duration: 0.3, ease: "easeOut" }}>
                   <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="mb-6 flex justify-center">
@@ -165,9 +150,7 @@ const About = () => {
                         {edu.gpa}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 flex-grow">
-                      {edu.details}
-                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 flex-grow">{edu.details}</p>
                   </Card>
                 </motion.div>
               );
