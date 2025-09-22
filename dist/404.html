@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Alvee Portfolio - Redirecting...</title>
+    <script type="text/javascript">
+      // 1. Get the path from the URL.
+      // e.g., https://<user>.github.io/AlveePortfolio/about -> /AlveePortfolio/about
+      var path = window.location.pathname;
+
+      // 2. Remove the repository name from the start of the path.
+      // e.g., /AlveePortfolio/about -> /about
+      var repoName = '/AlveePortfolio';
+      var cleanPath = path.startsWith(repoName) ? path.substring(repoName.length) : path;
+      
+      // 3. Construct the new URL to redirect to index.html with the path as a query parameter.
+      var newUrl = window.location.protocol + '//' + window.location.host + repoName + '/?p=' + cleanPath.substring(1);
+
+      // 4. Redirect the browser.
+      window.location.href = newUrl;
+    </script>
+  </head>
+  <body>
+    If you are not redirected automatically, please <a href="/AlveePortfolio/">click here</a>.
+  </body>
+</html>
