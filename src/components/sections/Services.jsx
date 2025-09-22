@@ -15,14 +15,12 @@ const iconMap = {
 
 const Services = () => {
   const [showAll, setShowAll] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState(null);
   const services = servicesData;
 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
     <section id="services" className="relative section-padding overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100 dark:from-gray-900 dark:to-night-background">
-      {/* পরিবর্তন: অতিরিক্ত ব্যাকগ্রাউন্ড এলিমেন্ট (particles, grid) সরিয়ে দেওয়া হয়েছে */}
       <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-r from-primary/5 to-purple-600/5"></div>
       <div className="absolute top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 -right-20 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl"></div>
@@ -57,7 +55,7 @@ const Services = () => {
         >
           <AnimatePresence mode="popLayout">
             {displayedServices.map((service, index) => {
-              const IconComponent = iconMap[service.icon]; // <-- আইকন কম্পোনেন্ট পাওয়া
+              const IconComponent = iconMap[service.icon];
               return (
                 <motion.div
                   key={service.id}
@@ -73,18 +71,12 @@ const Services = () => {
                   }}
                   whileHover={{ y: -15, transition: { duration: 0.3 } }}
                   className="group"
-                  onMouseEnter={() => setHoveredCard(service.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
                 >
                   <Card className="h-full p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/30 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
                     <div className="relative z-10">
-                      {/* পরিবর্তন: আইকন কন্টেইনারের জন্য নতুন প্রিমিয়াম স্টাইল */}
-                      <motion.div 
-                        className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8 relative bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30"
-                      >
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"></div>
-                        {IconComponent && <IconComponent className="w-10 h-10 text-white drop-shadow-lg" />}
-                      </motion.div>
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-primary shadow-lg shadow-primary/30">
+                        {IconComponent && <IconComponent className="w-8 h-8 text-white" />}
+                      </div>
                       
                       <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
                         {service.title}

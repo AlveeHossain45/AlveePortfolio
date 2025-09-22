@@ -5,7 +5,6 @@ import profile from '../../data/profile';
 import Card from '../ui/Card.jsx';
 
 const About = () => {
-  // শিক্ষা সংক্রান্ত ডেটা এবং তাদের নিজ নিজ আইকন
   const educationData = [
     { 
       title: "B.Sc. in CSE", 
@@ -89,9 +88,8 @@ const About = () => {
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <Calendar className="w-6 h-6 text-white drop-shadow-lg" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.age} years old</span>
@@ -103,9 +101,8 @@ const About = () => {
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <MapPin className="w-6 h-6 text-white drop-shadow-lg" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">{profile.location}</span>
@@ -117,9 +114,8 @@ const About = () => {
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50"
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30 flex-shrink-0">
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-xl"></div>
-                    <BookOpen className="w-6 h-6 text-white drop-shadow-lg" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30 flex-shrink-0">
+                    <BookOpen className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <span className="text-lg font-semibold text-gray-800 dark:text-white">
@@ -146,10 +142,9 @@ const About = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto rounded-full"></div>
           </div>
           
-          {/* =========== পরিবর্তন শুরু =========== */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {educationData.map((edu, index) => {
-              const IconComponent = edu.icon; // প্রতিটি কার্ডের জন্য নির্দিষ্ট আইকন
+              const IconComponent = edu.icon;
               return (
                 <motion.div
                   key={index}
@@ -159,9 +154,8 @@ const About = () => {
                   <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="mb-6 flex justify-center">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/30">
-                          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-2xl"></div>
-                          <IconComponent className="w-8 h-8 text-white drop-shadow-lg" />
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30">
+                          <IconComponent className="w-8 h-8 text-white" />
                       </div>
                     </div>
                     <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{edu.title}</h4>
@@ -179,7 +173,6 @@ const About = () => {
               );
             })}
           </div>
-          {/* =========== পরিবর্তন শেষ =========== */}
         </motion.div>
       </div>
     </section>
