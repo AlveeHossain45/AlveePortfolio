@@ -4,27 +4,23 @@
     <meta charset="utf-8">
     <title>Alvee Portfolio - Redirecting...</title>
     <script type="text/javascript">
-      // আপনার রিপোজিটরির নামটি এখানে দিন
-      var repoName = 'AlveePortfolio';
-
-      // বর্তমান পাথ এবং কোয়েরি স্ট্রিং নিন
+      // 1. Get the path from the URL.
+      // e.g., https://<user>.github.io/AlveePortfolio/about -> /AlveePortfolio/about
       var path = window.location.pathname;
-      var search = window.location.search;
 
-      // যদি পাথ রিপোজিটরির নামের মধ্যে থাকে, তবে সেই অংশটুকু বাদ দিন
-      var segment = path.split('/').filter(function (el) { return el.length > 0; })[0];
-      if (segment === repoName) {
-        path = path.replace('/' + repoName, '');
-      }
+      // 2. Remove the repository name from the start of the path.
+      // e.g., /AlveePortfolio/about -> /about
+      var repoName = '/AlveePortfolio';
+      var cleanPath = path.startsWith(repoName) ? path.substring(repoName.length) : path;
       
-      // নতুন URL তৈরি করুন এবং sessionStorage-এ সেভ করুন
-      var newPath = path + search;
-      sessionStorage.redirect = newPath;
+      // 3. Construct the new URL to redirect to index.html with the path as a query parameter.
+      var newUrl = window.location.protocol + '//' + window.location.host + repoName + '/?p=' + cleanPath.substring(1);
 
-      // মূল index.html ফাইলে রিডাইরেক্ট করুন
-      window.location.replace(window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/' + repoName + '/');
+      // 4. Redirect the browser.
+      window.location.href = newUrl;
     </script>
   </head>
   <body>
+    If you are not redirected automatically, please <a href="/AlveePortfolio/">click here</a>.
   </body>
 </html>

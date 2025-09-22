@@ -2,15 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- আপনার পছন্দের আইকন এখানে দিন (public ফোল্ডারে রাখুন) -->
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Meta Tags -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
     <title>Alvee - CSE Student & Aspiring Software Engineer</title>
-    <meta name="description" content="Personal portfolio of Alvee, a CSE student and aspiring software engineer specializing in web development, cybersecurity, and modern technologies." />
-    <meta name="keywords" content="Alvee, software engineer, web developer, portfolio, React, JavaScript, Python, cybersecurity" />
-    <meta name="author" content="Alvee" />
+    
+    <!-- === GitHub Pages SPA Redirect Script (START) === -->
+    <!-- এই নতুন স্ক্রিপ্টটি 404.html থেকে পাঠানো পাথকে হ্যান্ডেল করবে -->
+    <script type="text/javascript">
+      (function() {
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get('p');
+        if (path) {
+          // e.g., if path is '/about', it constructs the correct URL
+          // /AlveePortfolio/about
+          const newPath = window.location.pathname + path.replace(/^\//, '');
+          window.history.replaceState(null, null, newPath + window.location.hash);
+        }
+      })();
+    </script>
+    <!-- === GitHub Pages SPA Redirect Script (END) === -->
+
   </head>
   <body>
     <div id="root"></div>
