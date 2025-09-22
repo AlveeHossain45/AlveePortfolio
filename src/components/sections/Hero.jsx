@@ -31,7 +31,6 @@ const Hero = () => {
             {profile.about}
           </p>
 
-          {/* পরিবর্তন: 'flex-col sm:flex-row' কে 'flex-row' করা হয়েছে */}
           <motion.div 
             className="flex flex-row items-center justify-start gap-4"
             initial={{ opacity: 0, y: 20 }}
@@ -79,13 +78,16 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="relative group">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
+            {/* ======================= পরিবর্তন এখানে করা হয়েছে ======================= */}
+            {/* ছবির কন্টেইনারের সাইজ ছোট স্ক্রিনের জন্য w-56 h-56 থেকে w-64 h-64 করা হয়েছে */}
+            <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
               <img 
                 src={profile.photo} 
                 alt={profile.name}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
+            {/* ========================================================================= */}
             <div className="absolute -inset-4 rounded-full border border-primary/20 animate-pulse"></div>
           </div>
         </motion.div>
