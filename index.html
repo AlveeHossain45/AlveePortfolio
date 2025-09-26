@@ -2,25 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Alvee - CSE Student & Aspiring Software Engineer</title>
     
-    <!-- === GitHub Pages SPA Redirect Script (START) === -->
-    <!-- এই নতুন স্ক্রিপ্টটি 404.html থেকে পাঠানো পাথকে হ্যান্ডেল করবে -->
-    <script type="text/javascript">
-      (function() {
-        const params = new URLSearchParams(window.location.search);
-        const path = params.get('p');
-        if (path) {
-          // e.g., if path is '/about', it constructs the correct URL
-          // /AlveePortfolio/about
-          const newPath = window.location.pathname + path.replace(/^\//, '');
-          window.history.replaceState(null, null, newPath + window.location.hash);
-        }
-      })();
+    <!-- === নতুন প্রিমিয়াম লোগো (SVG Data URI) === -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='glass' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='rgba(255,255,255,0.2)'/%3E%3Cstop offset='100%25' stop-color='rgba(255,255,255,0.1)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='25' fill='rgba(10,10,10,0.8)' stroke='rgba(255,215,0,0.3)' stroke-width='2'/%3E%3Crect width='90' height='90' x='5' y='5' rx='20' fill='url(%23glass)'/%3E%3Ctext x='50' y='60' font-size='35' fill='%23FFD700' font-family='Arial' text-anchor='middle' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- === SEO Meta Tags (আপডেটেড) === -->
+    <title>Alvee - Creative Web Developer & Full-Stack Enthusiast</title>
+    <meta name="description" content="Personal portfolio of Alvee, a Creative Web Developer specializing in modern web technologies, responsive design, and building scalable applications." />
+    <meta name="keywords" content="Alvee, web developer, full-stack developer, portfolio, React, JavaScript, Node.js, modern web" />
+    <meta name="author" content="Alvee" />
+    
+    <!-- === Open Graph Meta Tags (আপডেটেড) === -->
+    <meta property="og:title" content="Alvee - Creative Web Developer" />
+    <meta property="og:description" content="Explore the portfolio of Alvee, a passionate web developer creating stunning and functional web applications." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alveehossain45.github.io/AlveePortfolio/" />
+    <meta property="og:image" content="https://alveehossain45.github.io/AlveePortfolio/og-image.jpg" />
+    
+    <!-- === Twitter Card Meta Tags (আপডেটেড) === -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alvee - Creative Web Developer" />
+    <meta name="twitter:description" content="Explore the portfolio of Alvee, a passionate web developer creating stunning and functional web applications." />
+    <meta name="twitter:image" content="https://alveehossain45.github.io/AlveePortfolio/twitter-image.jpg" />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- === Structured Data (আপডেটেড) === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alvee",
+      "jobTitle": "Creative Web Developer",
+      "url": "https://alveehossain45.github.io/AlveePortfolio/",
+      "sameAs": [
+        "https://github.com/AlveeHossain45",
+        "https://linkedin.com/in/replace",
+        "https://twitter.com/replace"
+      ]
+    }
     </script>
-    <!-- === GitHub Pages SPA Redirect Script (END) === -->
+    
+    <!-- === GitHub Pages SPA Redirect Script === -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
 
   </head>
   <body>
