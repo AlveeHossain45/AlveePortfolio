@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, BookOpen, GraduationCap, BookMarked, FileText } from 'lucide-react';
-// সঠিক পাথ ব্যবহার করা হয়েছে
 import profile from '../../data/profile.js'; 
 import Card from '../ui/Card.jsx';
 
@@ -33,6 +32,7 @@ const About = () => {
   return (
     <section id="about" className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-night-background">
       <div className="container mx-auto container-padding">
+        {/* About Me Section - No changes here */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -129,6 +129,9 @@ const About = () => {
           </motion.div>
         </div>
 
+        {/* ======================================================= */}
+        {/* ========= এই সেকশনটিতে মূল পরিবর্তন করা হয়েছে ========= */}
+        {/* ======================================================= */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -149,27 +152,43 @@ const About = () => {
               return (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  whileHover={{ y: -10, scale: 1.03 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
-                  <Card hoverable className="p-8 text-center h-full flex flex-col relative overflow-hidden group">
-                    <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="mb-6 flex justify-center">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-primary shadow-lg shadow-primary/30">
-                          <IconComponent className="w-8 h-8 text-white" />
+                  <div 
+                    className="h-full p-8 text-left relative overflow-hidden rounded-2xl 
+                               bg-white/70 dark:bg-night-card/80 backdrop-blur-md 
+                               border border-slate-200 dark:border-gray-700/50 
+                               shadow-lg dark:shadow-primary/10 transition-all duration-300 group"
+                  >
+                    {/* স্থায়ী টপ বর্ডার */}
+                    <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-purple-600"></div>
+
+                    {/* উপরের অংশ: আইকন এবং টাইটেল */}
+                    <div className="flex items-center gap-5 mb-4">
+                      {/* আইকন (সব সময় রঙিন) */}
+                      <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center 
+                                  bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/40">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white">{edu.title}</h4>
+                        <p className="text-gray-600 dark:text-gray-400 font-medium">{edu.university}</p>
                       </div>
                     </div>
-                    <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{edu.title}</h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-3 font-medium">{edu.university}</p>
+
+                    {/* জিপিএ */}
                     <div className="my-3">
                       <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${edu.gpa.startsWith("GPA") ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-primary/10 text-primary'}`}>
                         {edu.gpa}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 flex-grow">
+
+                    {/* বিস্তারিত বর্ণনা */}
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 leading-relaxed">
                       {edu.details}
                     </p>
-                  </Card>
+                  </div>
                 </motion.div>
               );
             })}
