@@ -166,11 +166,13 @@ const About = () => {
 
                     {/* উপরের অংশ: আইকন এবং টাইটেল */}
                     <div className="flex items-center gap-5 mb-4">
-                      {/* আইকন (সব সময় রঙিন) */}
+                      
+                      {/* === পরিবর্তন এখানে করা হয়েছে === */}
                       <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center 
-                                  bg-gradient-to-br from-primary to-purple-600 shadow-lg shadow-primary/40">
+                                  bg-primary shadow-lg shadow-primary/30">
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
+
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 dark:text-white">{edu.title}</h4>
                         <p className="text-gray-600 dark:text-gray-400 font-medium">{edu.university}</p>
